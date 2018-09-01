@@ -1,7 +1,7 @@
 import csv
 import pandas as pd
 
-full_data_frame = pd.read_csv("data.csv")
+full_data_frame = pd.read_csv("data.csv", encoding = 'GBK')
 
 def FighterWeight(weight, weight_fights , file_name):  # Generates CSV files for all fighters in certain weight class
     # necessary to run other file
