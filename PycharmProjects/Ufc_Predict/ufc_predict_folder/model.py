@@ -14,12 +14,20 @@ class fighter:
         self.name = name
 
     def fighter_type(self):
-        lol = list(csv.reader(open('fighter_type.csv', 'rb'), delimiter='\t'))
-
-        for i in range(1, len(lol)):
-            if self.name == lol[i][0]:
-                # print(lol[i][1])
-                return lol[i][1]
+        lol = list(csv.reader(open('FighterAndFighterType.csv', 'rb')))
+        for i in range(1, len(lol) - 1):
+            if self.name == lol[i][1]:
+                #print lol[i][1]
+                #print(lol[i][0])
+                #print(lol[i][1])
+                # print lol[i][2]
+                return lol[i][2]
+        # fighter_and_fighter_type = pd.read_csv('FighterAndFighterType.csv')
+        # fighter_and_fighter_type = fighter_and_fighter_type[fighter_and_fighter_type.fighter_name == self.name]
+        # #print fighter_and_fighter_type
+        # print fighter_and_fighter_type.reset_index(drop=True)
+        # print(fighter_and_fighter_type.iat[0, 2])
+        # return fighter_and_fighter_type.iat[0, 2]
 
 
 class fights(fighter):
@@ -27,7 +35,7 @@ class fights(fighter):
     def __init__(self, name, *args, **kwargs):
         fighter.__init__(self, name, *args, **kwargs)
 
-    # print(self.name)
+        #print(self.name)
 
     def number_of_fights(self):
         count = 0
@@ -162,7 +170,7 @@ full_data_frame = pd.DataFrame()
 
 for i in range(1, len(fighter_loop) - 1):
     object_choice = fight_manipulation(fighter_loop[i][1])
-    # print fighter_loop[i][1]
+    #print fighter_loop[i][1]
     object_choice.filtered_fights('DEC')
     object_choice.filtered_fights_three_round()
     object_choice.winner()
@@ -179,6 +187,9 @@ for i in range(1, len(fighter_loop) - 1):
     object_choice.attribute_difference('B__Round1_Grappling_Takedowns_Attempts')
     object_choice.attribute_difference('B__Round1_Grappling_Takedowns_Landed')
     object_choice.add_fighter_type()
+    # print object_choice.name
+    # print object_choice.chosen_attributes
+    # print object_choice.chosen_attributes['Striker']
     object_choice.attribute_difference('B__Round2_Strikes_Body Total Strikes_Attempts')
     object_choice.attribute_difference('B__Round2_Strikes_Body Total Strikes_Landed')
     object_choice.attribute_difference('B__Round2_Strikes_Ground Total Strikes_Attempts')
