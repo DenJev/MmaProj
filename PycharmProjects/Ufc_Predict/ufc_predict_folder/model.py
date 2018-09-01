@@ -14,20 +14,10 @@ class fighter:
         self.name = name
 
     def fighter_type(self):
-        lol = list(csv.reader(open('FighterAndFighterType.csv', 'rb')))
+        lol = list(csv.reader(open('FighterAndFighterType.csv', 'rt', encoding = 'GBK')))
         for i in range(1, len(lol) - 1):
             if self.name == lol[i][1]:
-                #print lol[i][1]
-                #print(lol[i][0])
-                #print(lol[i][1])
-                # print lol[i][2]
                 return lol[i][2]
-        # fighter_and_fighter_type = pd.read_csv('FighterAndFighterType.csv')
-        # fighter_and_fighter_type = fighter_and_fighter_type[fighter_and_fighter_type.fighter_name == self.name]
-        # #print fighter_and_fighter_type
-        # print fighter_and_fighter_type.reset_index(drop=True)
-        # print(fighter_and_fighter_type.iat[0, 2])
-        # return fighter_and_fighter_type.iat[0, 2]
 
 
 class fights(fighter):
@@ -43,7 +33,7 @@ class fights(fighter):
             for row in fight_file:
                 count += 1
 
-        print 'The number of fights', self.name, 'has been in is', count
+        print('The number of fights', self.name, 'has been in is', count)
 
         return count
 
@@ -164,7 +154,7 @@ class fight_manipulation(fights):
         return self.chosen_attributes
 
 
-fighter_loop = list(csv.reader(open('FighterAndFighterType.csv', 'rb')))
+fighter_loop = list(csv.reader(open('FighterAndFighterType.csv', 'rt', encoding = 'GBK')))
 
 full_data_frame = pd.DataFrame()
 
